@@ -20,11 +20,10 @@ class Initialize extends React.Component {
             .catch(err => { console.log(err) })
     }
     createZone() {
-        
+
         fetch('http://localhost:3005/api/createZone')
             .then(res => res.json())
             .then(res => {
-                console.log("res ", res)
                 if (res.success === true) {
                     let zoneState = this.state.zone;
                     zoneState.push(res.data);
@@ -36,7 +35,6 @@ class Initialize extends React.Component {
         fetch('http://localhost:3005/api/deleteZone')
             .then(res => res.json())
             .then(res => {
-                console.log("res ", res)
                 if (res.success === true) {
                     let zoneState = this.state.zone;
                     zoneState.pop();
@@ -46,14 +44,14 @@ class Initialize extends React.Component {
     }
     render() {
         let { zone } = this.state;
-        //console.log(zone)
         return (
             <div>Initialize new parking lot here...
                 <Jumbotron>
                     <Row>
                         <Col>
-                            <Button className="mlr-10" variant="outline-primary" onClick={this.createZone.bind(this)}>Create Parking Zone</Button>
-                            <Button className="mlr-10" variant="outline-danger" onClick={this.deleteZone.bind(this)}>Delete Parking Zone</Button>
+                            {zone && zone.length <= 25 ? <Button className="mlr-10" variant="outline-primary" onClick={this.createZone.bind(this)}>Create Parking Zone</Button> : null}
+                            {zone && zone.length > 1 ? <Button className="mlr-10" variant="outline-danger" onClick={this.deleteZone.bind(this)}>Delete Parking Zone</Button> : null}
+
                         </Col>
                         <Col></Col>
                     </Row>

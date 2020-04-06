@@ -120,8 +120,8 @@ class Dashboard extends React.Component {
             .then(res => res.json())
             .then(res => {
                 if (res.success === true) {
-                    console.log(res.dashboard);
-                    let parkingSpace = res.dashboard;
+                    let parkingSpace = res.dashboard.sort();
+                    console.log(parkingSpace);
                     let distinctZone = [...new Set(parkingSpace.map(v => v.zone_id))];
                     this.setState({
                         filterZone: "All",
