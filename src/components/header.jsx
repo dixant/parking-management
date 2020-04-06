@@ -1,28 +1,37 @@
 import React from 'react';
-import { Navbar, NavLink, NavDropdown, FormControl, Button, Form, Nav } from 'react-bootstrap';
+import { Navbar, NavLink, Button, Nav, Form } from 'react-bootstrap';
 
-const Header = ()=> {
+function signoutFunction() {
+    console.log("Sign out");
+    localStorage.removeItem("loggedinUser");
+    window.location.pathname = "/";
+}
+const Header = () => {
+    let loggedinUser = localStorage.getItem("loggedinUser");
+    let canInitialize = false;
+    let canBookParking = false;
+    let canSeeReports = false;
+    let role = '';
+
+    if (loggedinUser) {
+        loggedinUser = JSON.parse(loggedinUser);
+        canInitialize = loggedinUser.previlage.canInitialize;
+        canBookParking = loggedinUser.previlage.canBookParking;
+        canSeeReports = loggedinUser.previlage.canSeeReports;
+        role = loggedinUser.u_type;
+    }
     return (
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">Parking Management</Navbar.Brand>
+            <Navbar.Brand href="/dashboard">Parking Management</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" >
                 <Nav className="mr-auto">
-                    <NavLink href="/initialize">Initialize</NavLink>
-                    <NavLink href="/dashboard">Dashboard</NavLink>
-                    <NavLink href="/report">Reports</NavLink>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                    </NavDropdown>
+                    {loggedinUser !== null ? <NavLink href="/dashboard">Dashboard</NavLink> : null}
+                    {canInitialize ? <NavLink href="/initialize">Initialize</NavLink> : null}
+                    {canSeeReports ? <NavLink href="/report">Reports</NavLink> : null}
                 </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-success">Search</Button>
-                </Form>
+                <span className="mlr-10">{role === '' ? "" : role === "agent" ? "Booking Counter Agent" : "Parking Zone Assistant"}</span>
+                <Button variant="outline-success" onClick={signoutFunction.bind()}>Sign Out</Button>
             </Navbar.Collapse>
         </Navbar>
     );

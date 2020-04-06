@@ -5,9 +5,80 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.center{
+  text-align: center;
+  margin: auto;
+}
+
+.not-found h1 {
+  font-size: 150px;
+}
+
+.not-found h2 {
+  font-size: 50px;
+}
+
+.not-found Button {
+  margin: 50px;
+}
+
+.parking-space-list.card-columns {
+  /* column-count: 3; */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.parking-space-list.card-columns .card {
+  flex: 15%;
+  margin: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .parking-space-list.card-columns .card {
+    flex: 80%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .parking-space-list.card-columns .card {
+    flex: 25%;
+  }
+}
+
+.parking-item.show-cursor{
+  cursor: pointer;
+}
+.parking-item.available {
+  background-color: #27ae60;
+}
+
+.parking-item.not-available {
+  background-color: #bdc3c7;
+}
+
+.pull-right {
+  float: right;
+}
+
+.m-7 {
+  margin: 7px;
+}
+.m-10 {
+  margin: 10px;
+}
+
+.mlr-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.error{
+  color: crimson;
 }
