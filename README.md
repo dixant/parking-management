@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Parking-Management
+This is a car parking management application, where all the parking spaces are defined
+with-in the system and been allocated to cars for certain period of time.
+
+## functionalities:
+1. Sign-in
+    1. Types of user: Booking Counter Agent, Parking Zone Assistant 
+2. Initialize: Initialize the data with a button click ( (only for Booking Counter Agent))
+    1. Parking Zone Data: Add 3 parking zones by naming them as A, B, and C
+    2. Parking Space Data: Add 30 parking space by naming them as A01...A10, B01...B10, and C01...C10.
+    3. Allocation: Remove all transactional data
+3. Dashboard
+    1. Parking Space Listing (sort by parking_space_title ascending, with fliter by parking_zone_title)
+    2. Shows Parking Space Title, Availability (Vacant: Green and Occupied: Gray), Vehicle Registration Number (if occupied)
+    3. Visible to both Booking Counter Agent, Parking Zone Assistant
+    4. Book Parking Space (only for Booking Counter Agent)
+        1. Require Vehicle Registration Number
+    5. Release Parking Space (only for Booking Counter Agent)
+        1. Require Vehicle Registration Number
+4. Reports: Show on the browser
+    1. Parking Zone Report
+    
+## Entities / Attributes
+1. user
+    1. user_id
+    2. name
+    3. email (use it as user name for sign-in)
+    4. password
+    5. type (Booking Counter Agent, Parking Zone Assistant)
+2. parking_zone
+    1. parking_zone_id
+    2. parking_zone_title
+    3. parking_space
+    4. parking_space_id
+    5. parking_space_title
+    6. parking_zone_id
+3. vehicle_parking
+    1. vehicle_parking_id
+    2. parking_zone_id
+    3. parking_space_id
+    4. booking_date_time
+    5. release_date_time
+
+## Dependencies included in Project
+1. Node
+2. Express
+3. MongoDB
+4. Nodemon
+5. react
+6. react-dom
+7. react-router
+8. react-router-dom
 
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `cd src/server`
+### `nodemon server.js`
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
