@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
 const router = express.Router();
 
 //it includes username , password and databse name.
-const dbUri = "mongodb+srv://dixant:water!sg00d@cluster0-bdc8i.mongodb.net/parkingMgmt?retryWrites=true&w=majority";
+const dbUri = "mongodb+srv://admin:admin@cluster0-bdc8i.mongodb.net/parkingMgmt?retryWrites=true&w=majority";
 mongoose.connect(dbUri, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true });
 let db = mongoose.connection;
 
